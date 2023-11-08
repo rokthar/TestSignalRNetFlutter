@@ -1,0 +1,7 @@
+﻿@model RealTimeTestSignalR.Models.person
+
+<form asp-controller="Home" asp-action="AddPerson" method="post">
+    Nombre: <input asp-for="Name" type="text" /> <br />
+    Apellido: <input asp-for="LastName" type="text" /> <br />
+    <button type="submit">Enviar</button>
+</form>

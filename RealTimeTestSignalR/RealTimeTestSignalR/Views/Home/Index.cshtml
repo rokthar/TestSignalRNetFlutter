@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div id="persons">
+
+</div>
+
+<script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
+
+<script>
+    var connection = new signalR.HubConnectionBuilder().withUrl("send-person").build();
+
+    connection.start().then(function(){
+        console.log("Conexión exitosa");
+    }).catch(function(err){
+        console.log(err);
+    })
+
+    connection.on("Recivir", function(name, lastname){
+        let divPerson = document.createElement("div");
+        divPerson.textContent = name + " " + lastname;
+        document.getElementById("persons").appendChild(divPerson);
+    })
+</script>
